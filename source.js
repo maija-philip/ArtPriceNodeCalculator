@@ -47,8 +47,21 @@ console.log("\nCalculating...\n")
 let percentBoardUsed = (paintingLength * paintingWidth) / (boardLength * boardWidth)
 console.log("Percent Board Used: " + (Math.round(percentBoardUsed * 10000) / 100).toFixed(2) + "%")
 
-let minimumCost = (hoursSpent * HOURLY_WAGE) + (percentBoardUsed * boardPrice) + (percentBoardUsed * sealPrice) + (percentBoardUsed * gessoPrice)
-minimumCost += (1.0/12.0) * paintingLength * paintingWidth * PAINT_PER_OUNCE
+let labor = hoursSpent * HOURLY_WAGE
+console.log("Labor Cost: $" + labor)
 
+let costForBoard = percentBoardUsed * boardPrice
+console.log("Calculated Board % Cost: $" + costForBoard)
+
+let costForSeal = percentBoardUsed * sealPrice
+console.log("Calculated Seal % Cost: $" + costForSeal)
+
+let costForGesso = percentBoardUsed * gessoPrice
+console.log("Calculated Gesso % Cost: $" + costForGesso)
+
+let costForPaint = (1.0/12.0) * paintingLength * paintingWidth * PAINT_PER_OUNCE
+console.log("Calculated Paint % Cost: $" + costForPaint)
+
+let minimumCost = labor + costForBoard + costForSeal + costForGesso + costForPaint
 minimumCost =  (Math.round(minimumCost * 100) / 100).toFixed(2);
-console.log("Minimum Cost: $" + minimumCost)
+console.log("\nMinimum Cost: $" + minimumCost);
